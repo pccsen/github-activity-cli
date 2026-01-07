@@ -43,5 +43,17 @@ def fetch_github_activity(username):
             print(f"HTTP oshipka: {e.code}")
     except urllib.error.URLError as e:
         print(f"Oshibka soedenenie: {e.reason}")
-                    
+    except json.JSONDecodeError:
+        print("Oshibka obrabotki dannyh JSON")
+        
+def main():
+    if len(sys.argv) !=2:
+        print("Ispolzovanie: github-activity <username>")
+        return
+    
+    username=sys.argv[1]
+    fetch_github_activity(username)
+    
+if __name__=="__main__":
+    main()
                     
